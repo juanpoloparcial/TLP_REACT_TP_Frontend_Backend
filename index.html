@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Saludo Personalizado</title>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial;
+            padding: 20px;
+        }
+        input, button {
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <h1>HOLA, MUNDO !</h1>
+    <h1>Ingrese su nombre</h1>
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <button onclick="obtenerSaludo()">Enviar</button>
+    <p id="respuesta"></p>
+
+    <script>
+        function obtenerSaludo() {
+            const nombre = document.getElementById('nombre').value;
+            fetch(`http://localhost:3000/saludo/`+ nombre)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('respuesta').innerText = data;
+                })
+                .catch(error => {
+                    document.getElementById('respuesta').innerText = "Error al conectar con el servidor.";
+                });
+        }
+    </script>
 </body>
 </html>
