@@ -18,6 +18,7 @@
   "homepage": "https://github.com/juanpoloparcial/TLP_REACT_TP_Frontend_Backend#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }
